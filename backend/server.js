@@ -1,8 +1,16 @@
+const connectDB = require("./config/db");
+
+
+require("dotenv").config();
 const express =require("express");
 const userRoutes = require("./routes/users");
 
+console.log("MONGO_URI =", process.env.MONGO_URI); // ✅ add this
+connectDB();
+
 const app=express();
-const PORT = 5000;
+const PORT = process.env.PORT || 5000;
+
 
 //middleware to read json
 app.use (express.json());
